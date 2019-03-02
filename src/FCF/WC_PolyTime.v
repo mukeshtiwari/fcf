@@ -5,8 +5,8 @@
 
 Set Implicit Arguments.
 
-Require Import FCF.
-Require Import Admissibility.
+Require Import FCF.FCF.
+Require Import FCF.Admissibility.
 
 Local Open Scope nat_scope.
 
@@ -219,8 +219,9 @@ Section CostTheory.
     intuition.
     eapply cost_uncurry_1.
     eapply cost_ext.
-    Focus 2.
-    eapply cost_ident.
+    2:{
+      eapply cost_ident.
+    }
     intuition.
   Qed.
   
@@ -231,8 +232,9 @@ Section CostTheory.
     intuition.
     eapply cost_uncurry_2.
     eapply cost_ext.
-    Focus 2.
-    eapply cost_ident.
+    2:{
+      eapply cost_ident.
+    }
     intuition.
   Qed.
 
@@ -292,7 +294,7 @@ Ltac costtac_one :=
 
 Ltac costtac := repeat (costtac_one).
 
-Require Import Asymptotic.
+Require Import FCF.Asymptotic.
 
 Definition poly_time_nonuniform_oc(cost : FunctionCostModel)(A B C : nat -> Set)(c : forall n, OracleComp (A n) (B n) (C n)) := 
   exists (f : nat -> nat -> nat), 

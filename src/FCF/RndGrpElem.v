@@ -4,8 +4,8 @@
 
 
 (* Sampling an element from a finite cyclic group *)
-Require Import FCF.
-Require Export GroupTheory.
+Require Import FCF.FCF.
+Require Export FCF.GroupTheory.
 
 Local Open Scope group_scope.
 
@@ -53,13 +53,14 @@ Section RndGrpElem.
     simpl.
     left.
     eapply eq_refl.
-    Focus 2.
-    rewrite bvToNat_natToBv_inverse.
-    simpl.
-    left.
-    eapply eq_refl.
-    eapply lognat_monotonic.
-    eapply modNat_lt.
+    2:{
+      rewrite bvToNat_natToBv_inverse.
+      simpl.
+      left.
+      eapply eq_refl.
+      eapply lognat_monotonic.
+      eapply modNat_lt.
+    }
     rewrite bvToNat_natToBv_inverse.
     unfold ltNatBool.
     destruct (lt_dec (modNat k order) order); trivial.

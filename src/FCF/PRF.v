@@ -5,9 +5,10 @@
 (* Definitions related to pseudoradom functions.  This file copies some items from ConstructedFunc.v, so we probably need to refactor this in the future. *)
 
 Set Implicit Arguments.
-Require Import FCF.
-Require Import CompFold. 
-Require Export Array.
+Require Import FCF.FCF.
+Require Import FCF.CompFold. 
+Require Export FCF.Array.
+Require Export FCF.Hybrid.
 
 Local Open Scope list_scope.
 Local Open Scope array_scope.
@@ -125,8 +126,6 @@ Section PRF_concrete.
     | Pr[PRF_NAI_G0] - Pr[PRF_NAI_G1] |.   
                          
   Section PRF_NA_impl_NAI.
-
-    Require Export Hybrid.
 
     Variable maxLists : nat.
     Hypothesis maxLists_correct : 
@@ -256,8 +255,8 @@ Section PRF_concrete.
   
 End PRF_concrete.
 
-Require Import Asymptotic.
-Require Import Admissibility.
+Require Import FCF.Asymptotic.
+Require Import FCF.Admissibility.
 
 Section PRF.
 

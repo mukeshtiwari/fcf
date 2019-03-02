@@ -5,9 +5,9 @@
 
 Set Implicit Arguments.
 
-Require Export Comp.
-Require Import Blist.
-Require Import Fold.
+Require Export FCF.Comp.
+Require Import FCF.Blist.
+Require Import FCF.Fold.
 Require Import Permutation.
 Require Import Omega.
 
@@ -1072,8 +1072,9 @@ Lemma evalDet_step_more_support_preserved : forall (A : Set)(c c' : Comp A) s,
   eapply in_map_iff.
   econstructor.
   split.
-  Focus 2.
-  eapply filter_In; eauto.
+  2:{
+    eapply filter_In; eauto.
+  }
   assert (b x = true).
   eapply filter_In; eauto.
   rewrite H0.
